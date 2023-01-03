@@ -10,22 +10,26 @@ const calculator_buttons = document.querySelectorAll('.calculator-row button');
 
 // function to add two numbers
 function add(num_1, num_2) {
-    return num_1 + num_2;
+    total = num_1 + num_2;
+    return total;
 }
 
 // function to subtract two numbers
 function subtract(num_1, num_2) {
-    return num_1 - num_2;
+    total = num_1 - num_2;
+    return total;
 }
 
 // function to multiply two numbers
 function multiply(num_1, num_2) {
-    return num_1 * num_2;
+    total = num_1 * num_2;
+    return total;
 }
 
 // function to divide two numbers
 function divide(num_1, num_2) {
-    return num_1 / num_2;
+    total = num_1 / num_2;
+    return total;
 }
 
 // function to take two numbers and an operator to call the basic math functions
@@ -47,7 +51,6 @@ function operate(num_1, num_2, operator) {
             return "Error";
             break;
     }
-
 }
 
 // adds an event listener to every calculator button
@@ -110,7 +113,7 @@ calculator_buttons.forEach((button) => {
                 enterNumber(".");
                 break;
             case "equal":
-                operate(Number(first_number_string), Number(second_number_string), operator);
+                console.log(operate(Number(first_number_string), Number(second_number_string), operator));
                 break;
         }
     });
