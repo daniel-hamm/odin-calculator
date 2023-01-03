@@ -3,6 +3,7 @@ let first_number_string = "0";
 let second_number_string = "0";
 let first_or_second_num = 0;        // decide if the user enters the first or the second number; 0 = first; 1 = second
 let operator = "+";                 // saves the current operator the user chooses to use
+let total = 0;                      // the total of the calculation
 
 // add query selectors
 const calculator_buttons = document.querySelectorAll('.calculator-row button');
@@ -46,6 +47,7 @@ function operate(num_1, num_2, operator) {
             return "Error";
             break;
     }
+
 }
 
 // adds an event listener to every calculator button
@@ -108,7 +110,7 @@ calculator_buttons.forEach((button) => {
                 enterNumber(".");
                 break;
             case "equal":
-                console.log("=");
+                operate(Number(first_number_string), Number(second_number_string), operator);
                 break;
         }
     });
@@ -136,12 +138,26 @@ function enterNumber(num) {
 
 }
 
+// function to clear the current number to 0
 function clear() {
 
+    if(first_or_second_num === 0) {
 
+        first_number_string = "0";
+
+    } else if(first_or_second_num === 1) {
+
+        second_number_string = "0";
+
+    }
 
 }
 
+// function to reset everything to zero; input to first number
 function clear_all() {
+
+    first_number_string = "0";
+    second_number_string = "0";
+    first_or_second_num = 0;
 
 }
