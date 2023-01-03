@@ -1,7 +1,5 @@
 // add global variables
-let first_number_num = 0;
 let first_number_string = "0";
-let second_number_num = 0;
 let second_number_string = "0";
 let first_or_second_num = 0;        // decide if the user enters the first or the second number; 0 = first; 1 = second
 let operator = "+";                 // saves the current operator the user chooses to use
@@ -55,59 +53,59 @@ calculator_buttons.forEach((button) => {
     button.addEventListener(('click'), () => {
         switch(button.id) {
             case "zero":
-                console.log("0");
+                enterNumber("0");
                 break;
             case "one":
-                console.log("1");
+                enterNumber("1");
                 break;
             case "two":
-                console.log("2");
+                enterNumber("2");
                 break;
             case "three":
-                console.log("3");
+                enterNumber("3");
                 break;
             case "four":
-                console.log("4");
+                enterNumber("4");
                 break;
             case "five":
-                console.log("5");
+                enterNumber("5");
                 break;
             case "six":
-                console.log("6");
+                enterNumber("6");
                 break;
             case "seven":
-                console.log("7");
+                enterNumber("7");
                 break;
             case "eight":
-                console.log("8");
+                enterNumber("8");
                 break;
             case "nine":
-                console.log("9");
+                enterNumber("9");
                 break;
             case "plus":
                 operator = "+";
-                console.log(operator);
+                first_or_second_num = 1;    // if the user chooses the operator, we switch to the second number to be entered
                 break;
             case "minus":
                 operator = "-";
-                console.log(operator);
+                first_or_second_num = 1;    // if the user chooses the operator, we switch to the second number to be entered
                 break;
             case "multiply":
                 operator = "*";
-                console.log(operator);
+                first_or_second_num = 1;    // if the user chooses the operator, we switch to the second number to be entered
                 break;
             case "divide":
                 operator = "/";
-                console.log(operator);
+                first_or_second_num = 1;    // if the user chooses the operator, we switch to the second number to be entered
                 break;
-            case "clear":
-                console.log("C");
+            case "clear":                   
+                clear();
                 break;
-            case "all-clear":
-                console.log("AC");
+            case "all-clear":               
+                clear_all();
                 break;
             case "dot":
-                console.log(".");
+                enterNumber(".");
                 break;
             case "equal":
                 console.log("=");
@@ -116,3 +114,34 @@ calculator_buttons.forEach((button) => {
     });
 });
 
+// function to catch the users number input
+function enterNumber(num) {
+
+    if(first_or_second_num === 0) {                 // the user enters the first number?
+
+        if(first_number_string === "0")             // is the number still 0?
+            first_number_string = String(num);      // overwrite it with the new number
+        else                                        // is the number not 0?
+            first_number_string += String(num);     // append the next number input to the number string
+            
+        
+    } else if(first_or_second_num === 1) {          // the user enters the second number?
+
+        if(second_number_string === "0")            // is the number still 0?
+            second_number_string = String(num);     // overwrite it with the new number
+        else                                        // is the number not 0?
+            second_number_string += String(num);    // append the next number input to the number string
+
+    }
+
+}
+
+function clear() {
+
+
+
+}
+
+function clear_all() {
+
+}
