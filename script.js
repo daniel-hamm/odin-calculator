@@ -6,6 +6,7 @@ let operator = "+";                 // saves the current operator the user choos
 let total = 0;                      // the total of the calculation
 
 // add query selectors
+const input_field = document.querySelector('#number_input');
 const calculator_buttons = document.querySelectorAll('.calculator-row button');
 
 // function to add two numbers
@@ -114,6 +115,7 @@ calculator_buttons.forEach((button) => {
                 break;
             case "equal":
                 console.log(operate(Number(first_number_string), Number(second_number_string), operator));
+                input_field.setAttribute('value', total);
                 break;
         }
     });
@@ -139,6 +141,8 @@ function enterNumber(num) {
 
     }
 
+    user_input_output();
+
 }
 
 // function to clear the current number to 0
@@ -154,6 +158,8 @@ function clear() {
 
     }
 
+    input_field.setAttribute('value', '0');
+
 }
 
 // function to reset everything to zero; input to first number
@@ -162,5 +168,21 @@ function clear_all() {
     first_number_string = "0";
     second_number_string = "0";
     first_or_second_num = 0;
+    input_field.setAttribute('value', '0');
+
+}
+
+// function to update the user input / output
+function user_input_output() {
+
+    if(first_or_second_num === 0) {
+
+        input_field.setAttribute('value', first_number_string);
+
+    } else if(first_or_second_num === 1) {
+
+        input_field.setAttribute('value', second_number_string);
+
+    }
 
 }

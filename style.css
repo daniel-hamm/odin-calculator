@@ -37,10 +37,6 @@ body {
     color: white;
 }
 
-.calculator-button:focus {
-    border: 1px solid orange;
-}
-
 #number_input {
     flex: 1;
     border: 1px solid black;
