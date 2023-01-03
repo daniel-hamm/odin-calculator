@@ -1,0 +1,30 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.main {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.calculator {
+    display: flex;
+    flex-shrink: 0;
+    flex-direction: column;
+    width: 500px;
+    height: 500px;
+    border: 1px solid black;
+}
+
+.calculator-row {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+}
+
+.calculator-button {
+    flex: 1;
+    border: 1px solid black;
+}
