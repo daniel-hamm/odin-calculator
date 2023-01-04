@@ -280,5 +280,11 @@ window.onkeydown = function(e) {
         case 57:                // number 9
             enterNumber("9");
             break;
+        case 8:                 // backspace
+            console.log("backspace");
+            break;
+        case 13:                // enter
+            equal();
+            break;
     }
 }
