@@ -16,49 +16,48 @@ input_field.innerText = "0";
 // function to add two numbers
 function add(num_1, num_2) {
 
-    let value = num_1 + num_2;
+    let value = num_1 + num_2;          // sum of the two numbers
 
-    if(isInt(value))
-        return value;
-    else
-        return value.toFixed(15);
+    if(isInt(value))                    // if the result is an integer
+        return value;                   // just return the result
+    else                                // if the result is NOT an integer
+        return value.toFixed(15);       // return the float and limit the decimal places
 
 }
 
 // function to subtract two numbers
 function subtract(num_1, num_2) {
 
-    let value = num_1 - num_2;
+    let value = num_1 - num_2;          // difference of the two numbers
     
-    if(isInt(value))
-        return value;
-    else
-        return value.toFixed(15);
+    if(isInt(value))                    // if the result is an integer
+        return value;                   // just return the result
+    else                                // if the result is NOT an integer
+        return value.toFixed(15);       // return the float and limit the decimal places
 
 }
 
 // function to multiply two numbers
 function multiply(num_1, num_2) {
 
-    let value = num_1 * num_2;
+    let value = num_1 * num_2;          // product of the two numbers
     
-    if(isInt(value))
-        return value;
-    else
-        return value.toFixed(15);
+    if(isInt(value))                    // if the result is an integer
+        return value;                   // just return the result
+    else                                // if the result is NOT an integer
+        return value.toFixed(15);       // return the float and limit the decimal places
 
 }
 
 // function to divide two numbers
 function divide(num_1, num_2) {
 
-    let value = num_1 / num_2;
+    let value = num_1 / num_2;          // quotient of the two numbers
     
-    if(isInt(value)) {
-        return value;
-    }
-    else
-        return value.toFixed(15);
+    if(isInt(value))                    // if the result is an integer
+        return value;                   // just return the result
+    else                                // if the result is NOT an integer
+        return value.toFixed(15);       // return the float and limit the decimal places
 
 }
 
@@ -214,18 +213,21 @@ function clear() {
             // reset the first number to 0
             first_number_string = "0";
 
+            // set the displayed input / output number to 0
+            input_field.innerText = first_number_string;
+
         // current number state is 1 (number 2)?
         } else if(first_or_second_num === 1) {
 
             // reset the second number to 1
             second_number_string = "0";
 
+            // set the displayed input / output number to 0
+            input_field.innerText = second_number_string;
+
         }
 
     }
-
-    // set the displayed input / output number to 0
-    input_field.innerText = "0";
 
 }
 
@@ -242,12 +244,16 @@ function clear_all() {
 // function to update the user input / output
 function user_input_output() {
 
+    // current number state is 0 (number 1)? 
     if(first_or_second_num === 0) {
 
+        // set the displayed input / output to the first number string
         input_field.innerText = first_number_string;
 
+    // current number state is 1 (number 2)?
     } else if(first_or_second_num === 1) {
 
+        // set the displayed input / output to the second number string
         input_field.innerText = second_number_string;
 
     }
@@ -257,10 +263,10 @@ function user_input_output() {
 // function to check if we have an int (or a float)
 function isInt(num) {
 
-    if(num % 1 === 0)
-        return true;
-    else
-        return false;
+    if(num % 1 === 0)       // if modulo 1 of the number is 0, we have an integer
+        return true;        // so number is an integer and we return true
+    else                    // if modulo 1 of the number is NOT 0, we have decimal places
+        return false;       // so number is NOT an integer and we return false
 
 }
 
