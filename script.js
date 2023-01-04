@@ -10,6 +10,27 @@ let output_state = 0;               // state 0 -> input of num1; state 1 -> inpu
 const input_field = document.querySelector('#user-in-out-num');
 const calculator_buttons = document.querySelectorAll('.calculator-row button');
 
+// query to all button ids
+const button_zero = document.querySelector('#zero');
+const button_one = document.querySelector('#one');
+const button_two = document.querySelector('#two');
+const button_three = document.querySelector('#three');
+const button_four = document.querySelector('#four');
+const button_five = document.querySelector('#five');
+const button_six = document.querySelector('#six');
+const button_seven = document.querySelector('#seven');
+const button_eight = document.querySelector('#eight');
+const button_nine = document.querySelector('#nine');
+const button_equal = document.querySelector('#equal');
+const button_plus = document.querySelector('#plus');
+const button_minus = document.querySelector('#minus');
+const button_multiply = document.querySelector('#multiply');
+const button_divide = document.querySelector('#divide');
+const button_clear = document.querySelector('#clear');
+const button_all_clear = document.querySelector('#all-clear');
+const button_dot = document.querySelector('#dot');
+
+
 // set the default value of the input field
 input_field.innerText = "0";
 
@@ -275,70 +296,90 @@ window.onkeydown = function(e) {
     switch(e.key) {
         case "0":                               // number 0
             enterNumber("0");
+            button_zero.classList.add("clicked");
             break;
         case "1":                               // number 1
             enterNumber("1");
+            button_one.classList.add("clicked");
             break;
         case "2":                               // number 2
             enterNumber("2");
+            button_two.classList.add("clicked");
             break;
         case "3":                               // number 3
             enterNumber("3");
+            button_three.classList.add("clicked");
             break;
         case "4":                               // number 4
             enterNumber("4");
+            button_four.classList.add("clicked");
             break;
         case "5":                               // number 5
             enterNumber("5");
+            button_five.classList.add("clicked");
             break; 
         case "6":                               // number 6
             enterNumber("6");
+            button_six.classList.add("clicked");
             break;
         case "7":                               // number 7
             enterNumber("7");
+            button_seven.classList.add("clicked");
             break;
         case "8":                               // number 8
             enterNumber("8");
+            button_eight.classList.add("clicked");
             break;
         case "9":                               // number 9
             enterNumber("9");
+            button_nine.classList.add("clicked");
             break;
         case "Backspace":                       // backspace
             backspace();
             break;
         case "Enter":                           // enter
             equal();
+            button_equal.classList.add("clicked");
             break;
         case "+":                               // plus
             operator = changeOperator("+");
+            button_plus.classList.add("clicked");
             first_or_second_num = 1;            // if the user chooses the operator, we switch to the second number to be entered
             break;
         case "-":                               // minus
             operator = changeOperator("-");
+            button_minus.classList.add("clicked");
             first_or_second_num = 1;            // if the user chooses the operator, we switch to the second number to be entered
             break;
         case "*":                               // multiply
             operator = changeOperator("*");
+            button_multiply.classList.add("clicked");
             first_or_second_num = 1;            // if the user chooses the operator, we switch to the second number to be entered
             break;
         case "/":                               // divide
             operator = changeOperator("/");
+            button_divide.classList.add("clicked");
             first_or_second_num = 1;            // if the user chooses the operator, we switch to the second number to be entered
             break;
         case "a":                               // lower case a
             clear_all();
+            button_all_clear.classList.add("clicked");
             break;
         case "A":                               // upper case a
             clear_all();
+            button_all_clear.classList.add("clicked");
             break;
         case "c":                               // lower case c
             clear();
+            button_clear.classList.add("clicked");
             break;
         case "C":                               // upper case c
             clear();
+            button_clear.classList.add("clicked");
             break;
         case ".":                               // dot
             enterNumber(".");
+            button_dot.classList.add("clicked");
             break;
     }
 }
