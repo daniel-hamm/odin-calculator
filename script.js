@@ -1,10 +1,10 @@
 // add global variables
 let first_number_string = "0";
 let second_number_string = "0";
-let first_or_second_num = 0;        // decide if the user enters the first or the second number; 0 = first; 1 = second
+let first_or_second_num = 0;        // catch if the user enters the first or the second number; 0 = first; 1 = second
 let operator = "+";                 // saves the current operator the user chooses to use
 let total = 0;                      // the total of the calculation
-let backspace_state = 0;                // state 0 -> input of num1; state 1 -> input of num2; state 2 -> output of equal (backspace not allowed)
+let output_state = 0;               // state 0 -> input of num1; state 1 -> input of num2; state 2 -> output of equal (backspace not allowed)
 
 // add query selectors
 const input_field = document.querySelector('#user-in-out-num');
@@ -152,8 +152,8 @@ calculator_buttons.forEach((button) => {
 // function to equal
 function equal() {
 
-    // set backspace state to 2, so we don't allow backspace, when the result is displayed
-    backspace_state = 2;
+    // set output state to 2, so we don't allow backspace, when the result is displayed
+    output_state = 2;
 
     // call the operate function to calculate both numbers with the operator; convert the input strings to numbers
     operate(Number(first_number_string), Number(second_number_string), operator);
@@ -167,13 +167,13 @@ function equal() {
 function changeOperator(operator) {
 
     if(first_or_second_num === 0) {                 // we are still at the first number?
-        backspace_state = 1;                        // set backspace state to 1, so backspace removes the second num
+        output_state = 1;                           // set output state to 1, so backspace removes the second num
         return operator;                            // just change the operator
     } else if(first_or_second_num === 1) {          // we are already at the second number input? -> happens when we do multiple calculations without hitting the equal button
         equal();                                    // run the calculation
         first_number_string = String(total);        // set the first number string to the calculation
         second_number_string = "0";                 // set the second number string to 0, so the user can append here
-        backspace_state = 1;                        // set backspace state to 1, so backspace removes the second num
+        output_state = 1;                           // set output state to 1, so backspace removes the second num
         return operator;                            // finally change the operator
     }
 }
@@ -205,16 +205,26 @@ function enterNumber(num) {
 // function to clear the current number to 0
 function clear() {
 
-    if(first_or_second_num === 0) {
+    // only allow clearance, when either number 1 or number 2 is displayed
+    if(output_state !== 2) {
 
-        first_number_string = "0";
+        // current number state is 0 (number 1)? 
+        if(first_or_second_num === 0) {
 
-    } else if(first_or_second_num === 1) {
+            // reset the first number to 0
+            first_number_string = "0";
 
-        second_number_string = "0";
+        // current number state is 1 (number 2)?
+        } else if(first_or_second_num === 1) {
+
+            // reset the second number to 1
+            second_number_string = "0";
+
+        }
 
     }
 
+    // set the displayed input / output number to 0
     input_field.innerText = "0";
 
 }
@@ -299,12 +309,32 @@ window.onkeydown = function(e) {
 // function for backspace removal of numbers
 function backspace() {
 
-    if(backspace_state === 0) {
-        console.log("backspace allowed");
-    } else if(backspace_state === 1) {
-        console.log("backspace allowed");
-    } else if(backspace_state === 2) {
-        console.log("backspace denied");
+    if(output_state === 0) {                // output state = 0? -> input state is for number 1, so removal is allowed
+
+        // remove the last character of the string, when backspace is hit
+        first_number_string = first_number_string.substring(0, first_number_string.length - 1);
+
+        // the last character is removed? set the string to 0
+        if(first_number_string === "")
+            first_number_string = "0";
+
+        // refresh the input / output field
+        user_input_output();
+
+    } else if(output_state === 1) {         // output state = 1? -> input state is for number 2, so removal is allowed
+
+        // remove the last character of the string, when backspace is hit
+        second_number_string = second_number_string.substring(0, second_number_string.length - 1);
+
+        // the last character is removed? set the string to 0
+        if(second_number_string === "")
+            second_number_string = "0";
+
+        // refresh the input / output field
+        user_input_output();
+
+    } else if(output_state === 2) {         // backspace state = 2? -> output of result, so removal by backspace is NOT allowed
+        // do nothing, as backspace is not allowed here
     }
 
 }
