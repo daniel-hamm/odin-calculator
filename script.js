@@ -204,20 +204,20 @@ function enterNumber(num) {
         // only change numbers, when we are not in result output mode
         if(output_state !== 2) {
             
-        if(first_or_second_num === 0) {                 // the user enters the first number?
+        if(first_or_second_num === 0) {                     // the user enters the first number?
 
-            if(first_number_string === "0")             // is the number still 0?
-                first_number_string = String(num);      // overwrite it with the new number
-            else                                        // is the number not 0?
-                first_number_string += String(num);     // append the next number input to the number string
+            if(first_number_string === "0" && num != ".")   // is the number still 0?
+                first_number_string = String(num);          // overwrite it with the new number
+            else                                            // is the number not 0?
+                first_number_string += String(num);         // append the next number input to the number string
                 
             
-        } else if(first_or_second_num === 1) {          // the user enters the second number?
+        } else if(first_or_second_num === 1) {              // the user enters the second number?
 
-            if(second_number_string === "0")            // is the number still 0?
-                second_number_string = String(num);     // overwrite it with the new number
-            else                                        // is the number not 0?
-                second_number_string += String(num);    // append the next number input to the number string
+            if(second_number_string === "0" && num != ".")  // is the number still 0?
+                second_number_string = String(num);         // overwrite it with the new number
+            else                                            // is the number not 0?
+                second_number_string += String(num);        // append the next number input to the number string
 
         }
 
