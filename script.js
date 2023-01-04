@@ -272,55 +272,73 @@ function isInt(num) {
 
 // function to detect if the user has pressed a key on the keyboard
 window.onkeydown = function(e) {
-    //console.log(e.key);
     switch(e.key) {
-        case "0":                // number 0
+        case "0":                               // number 0
             enterNumber("0");
             break;
-        case "1":                // number 1
+        case "1":                               // number 1
             enterNumber("1");
             break;
-        case "2":                // number 2
+        case "2":                               // number 2
             enterNumber("2");
             break;
-        case "3":                // number 3
+        case "3":                               // number 3
             enterNumber("3");
             break;
-        case "4":                // number 4
+        case "4":                               // number 4
             enterNumber("4");
             break;
-        case "5":                // number 5
+        case "5":                               // number 5
             enterNumber("5");
             break; 
-        case "6":                // number 6
+        case "6":                               // number 6
             enterNumber("6");
             break;
-        case "7":                // number 7
+        case "7":                               // number 7
             enterNumber("7");
             break;
-        case "8":                // number 8
+        case "8":                               // number 8
             enterNumber("8");
             break;
-        case "9":                // number 9
+        case "9":                               // number 9
             enterNumber("9");
             break;
-        case "Backspace":        // backspace
+        case "Backspace":                       // backspace
             backspace();
             break;
-        case "Enter":            // enter
+        case "Enter":                           // enter
             equal();
             break;
-        case "+":                // plus
-            console.log("+");
+        case "+":                               // plus
+            operator = changeOperator("+");
+            first_or_second_num = 1;            // if the user chooses the operator, we switch to the second number to be entered
             break;
-        case "-":                // minus
-            console.log("-");
+        case "-":                               // minus
+            operator = changeOperator("-");
+            first_or_second_num = 1;            // if the user chooses the operator, we switch to the second number to be entered
             break;
-        case "*":                // multiply
-            console.log("*");
+        case "*":                               // multiply
+            operator = changeOperator("*");
+            first_or_second_num = 1;            // if the user chooses the operator, we switch to the second number to be entered
             break;
-        case "/":                // divide
-            console.log("/");
+        case "/":                               // divide
+            operator = changeOperator("/");
+            first_or_second_num = 1;            // if the user chooses the operator, we switch to the second number to be entered
+            break;
+        case "a":                               // lower case a
+            clear_all();
+            break;
+        case "A":                               // upper case a
+            clear_all();
+            break;
+        case "c":                               // lower case c
+            clear();
+            break;
+        case "C":                               // upper case c
+            clear();
+            break;
+        case ".":                               // dot
+            enterNumber(".");
             break;
     }
 }
