@@ -273,16 +273,6 @@ function user_input_output() {
 
 }
 
-// function to check if we have an int (or a float)
-function isInt(num) {
-
-    if(num % 1 === 0)       // if modulo 1 of the number is 0, we have an integer
-        return true;        // so number is an integer and we return true
-    else                    // if modulo 1 of the number is NOT 0, we have decimal places
-        return false;       // so number is NOT an integer and we return false
-
-}
-
 // function to detect if the user has pressed a key on the keyboard
 window.onkeydown = function(e) {
     switch(e.key) {
