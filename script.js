@@ -264,6 +264,7 @@ function clear_all() {
     second_number_string = "0";
     first_or_second_num = 0;
     input_field.innerText = "0";
+    output_state = 0;
 
 }
 
