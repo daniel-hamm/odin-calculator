@@ -37,48 +37,28 @@ input_field.innerText = "0";
 // function to add two numbers
 function add(num_1, num_2) {
 
-    let value = num_1 + num_2;          // sum of the two numbers
-
-    if(isInt(value))                    // if the result is an integer
-        return value;                   // just return the result
-    else                                // if the result is NOT an integer
-        return value.toFixed(15);       // return the float and limit the decimal places
+    return value = num_1 + num_2;          // sum of the two numbers
 
 }
 
 // function to subtract two numbers
 function subtract(num_1, num_2) {
 
-    let value = num_1 - num_2;          // difference of the two numbers
-    
-    if(isInt(value))                    // if the result is an integer
-        return value;                   // just return the result
-    else                                // if the result is NOT an integer
-        return value.toFixed(15);       // return the float and limit the decimal places
+    return value = num_1 - num_2;          // difference of the two numbers
 
 }
 
 // function to multiply two numbers
 function multiply(num_1, num_2) {
 
-    let value = num_1 * num_2;          // product of the two numbers
-    
-    if(isInt(value))                    // if the result is an integer
-        return value;                   // just return the result
-    else                                // if the result is NOT an integer
-        return value.toFixed(15);       // return the float and limit the decimal places
+    return value = num_1 * num_2;          // product of the two numbers
 
 }
 
 // function to divide two numbers
 function divide(num_1, num_2) {
 
-    let value = num_1 / num_2;          // quotient of the two numbers
-    
-    if(isInt(value))                    // if the result is an integer
-        return value;                   // just return the result
-    else                                // if the result is NOT an integer
-        return value.toFixed(15);       // return the float and limit the decimal places
+    return value = num_1 / num_2;          // quotient of the two numbers
 
 }
 
@@ -178,8 +158,8 @@ function equal() {
     // call the operate function to calculate both numbers with the operator; convert the input strings to numbers
     operate(Number(first_number_string), Number(second_number_string), operator);
 
-    // set the value of the input field to the calculation
-    input_field.innerText = total;
+    // set the value of the input field to the calculation and limit to 15 characters
+    input_field.innerText = String(total).substring(0, 15);
 
 }
 
@@ -210,6 +190,9 @@ function enterNumber(num) {
                 first_number_string = String(num);          // overwrite it with the new number
             else                                            // is the number not 0?
                 first_number_string += String(num);         // append the next number input to the number string
+
+            // limit the input to 15 characters
+            first_number_string = first_number_string.substring(0, 15);     
                 
             
         } else if(first_or_second_num === 1) {              // the user enters the second number?
@@ -218,6 +201,9 @@ function enterNumber(num) {
                 second_number_string = String(num);         // overwrite it with the new number
             else                                            // is the number not 0?
                 second_number_string += String(num);        // append the next number input to the number string
+
+            // limit the input to 15 characters
+            second_number_string = second_number_string.substring(0, 15);
 
         }
 
