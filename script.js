@@ -89,19 +89,19 @@ calculator_buttons.forEach((button) => {
                 enterNumber("9");
                 break;
             case "plus":
-                operator = "+";
+                operator = changeOperator("+");
                 first_or_second_num = 1;    // if the user chooses the operator, we switch to the second number to be entered
                 break;
             case "minus":
-                operator = "-";
+                operator = changeOperator("-");
                 first_or_second_num = 1;    // if the user chooses the operator, we switch to the second number to be entered
                 break;
             case "multiply":
-                operator = "*";
+                operator = changeOperator("*");
                 first_or_second_num = 1;    // if the user chooses the operator, we switch to the second number to be entered
                 break;
             case "divide":
-                operator = "/";
+                operator = changeOperator("/");
                 first_or_second_num = 1;    // if the user chooses the operator, we switch to the second number to be entered
                 break;
             case "clear":                   
@@ -114,12 +114,34 @@ calculator_buttons.forEach((button) => {
                 enterNumber(".");
                 break;
             case "equal":
-                console.log(operate(Number(first_number_string), Number(second_number_string), operator));
-                input_field.setAttribute('value', total);
+                equal();
                 break;
         }
     });
 });
+
+// function to equal
+function equal() {
+
+    // call the operate function to calculate both numbers with the operator; convert the input strings to numbers
+    operate(Number(first_number_string), Number(second_number_string), operator);
+
+    // set the value of the input field to the calculation
+    input_field.setAttribute('value', total);
+}
+
+// function to change the operator and continue the calculation
+function changeOperator(operator) {
+
+    if(first_or_second_num === 0) {                 // we are still at the first number?
+        return operator;                            // just change the operator
+    } else if(first_or_second_num === 1) {          // we are already at the second number input? -> happens when we do multiple calculations without hitting the equal button
+        equal();                                    // run the calculation
+        first_number_string = String(total);        // set the first number string to the calculation
+        second_number_string = "0";                 // set the second number string to 0, so the user can append here
+        return operator;                            // finally change the operator
+    }
+}
 
 // function to catch the users number input
 function enterNumber(num) {
