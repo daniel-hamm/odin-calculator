@@ -4,6 +4,7 @@ let second_number_string = "0";
 let first_or_second_num = 0;        // decide if the user enters the first or the second number; 0 = first; 1 = second
 let operator = "+";                 // saves the current operator the user chooses to use
 let total = 0;                      // the total of the calculation
+let backspace_state = 0;                // state 0 -> input of num1; state 1 -> input of num2; state 2 -> output of equal (backspace not allowed)
 
 // add query selectors
 const input_field = document.querySelector('#user-in-out-num');
@@ -151,22 +152,28 @@ calculator_buttons.forEach((button) => {
 // function to equal
 function equal() {
 
+    // set backspace state to 2, so we don't allow backspace, when the result is displayed
+    backspace_state = 2;
+
     // call the operate function to calculate both numbers with the operator; convert the input strings to numbers
     operate(Number(first_number_string), Number(second_number_string), operator);
 
     // set the value of the input field to the calculation
     input_field.innerText = total;
+
 }
 
 // function to change the operator and continue the calculation
 function changeOperator(operator) {
 
     if(first_or_second_num === 0) {                 // we are still at the first number?
+        backspace_state = 1;                        // set backspace state to 1, so backspace removes the second num
         return operator;                            // just change the operator
     } else if(first_or_second_num === 1) {          // we are already at the second number input? -> happens when we do multiple calculations without hitting the equal button
         equal();                                    // run the calculation
         first_number_string = String(total);        // set the first number string to the calculation
         second_number_string = "0";                 // set the second number string to 0, so the user can append here
+        backspace_state = 1;                        // set backspace state to 1, so backspace removes the second num
         return operator;                            // finally change the operator
     }
 }
@@ -281,10 +288,23 @@ window.onkeydown = function(e) {
             enterNumber("9");
             break;
         case 8:                 // backspace
-            console.log("backspace");
+            backspace();
             break;
         case 13:                // enter
             equal();
             break;
     }
+}
+
+// function for backspace removal of numbers
+function backspace() {
+
+    if(backspace_state === 0) {
+        console.log("backspace allowed");
+    } else if(backspace_state === 1) {
+        console.log("backspace allowed");
+    } else if(backspace_state === 2) {
+        console.log("backspace denied");
+    }
+
 }
