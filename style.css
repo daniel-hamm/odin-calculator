@@ -17,12 +17,17 @@ body {
     width: 500px;
     height: 500px;
     border: 1px solid black;
+    gap: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: lightgrey;
 }
 
 .calculator-row {
     display: flex;
     flex-direction: row;
     flex: 1;
+    gap: 10px;
 }
 
 .calculator-button {
@@ -30,14 +35,27 @@ body {
     border: 1px solid black;
     background-color: white;
     color: black;
-    font-size: 24px;
+    font-size: 32px;
     font-family: monospace;
+    border-radius: 10px;
 }
 
 .calculator-button:hover {
     border: 1px solid black;
     background-color: black;
     color: white;
+}
+
+.operator {
+    background-color: orange;
+}
+
+#clear {
+    background-color: lightblue;
+}
+
+#all-clear {
+    background-color: lightcoral;
 }
 
 .clicked {
@@ -51,9 +69,11 @@ body {
     border: 1px solid black;
     text-align: center;
     font-family: monospace;
-    font-size: 24px;
+    font-size: 32px;
     color: black;
     display:flex;
     justify-content: center;
     align-items: center;
+    border-radius: 10px;
+    background-color: white;
 }
