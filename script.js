@@ -384,6 +384,28 @@ window.onkeydown = function(e) {
     }
 }
 
+// function to remove the clicked class, when we release the pressed button / key on the keyboard
+window.onkeyup = function(e) {
+    button_zero.classList.remove("clicked");
+    button_one.classList.remove("clicked");
+    button_two.classList.remove("clicked");
+    button_three.classList.remove("clicked");
+    button_four.classList.remove("clicked");
+    button_five.classList.remove("clicked");
+    button_six.classList.remove("clicked");
+    button_seven.classList.remove("clicked");
+    button_eight.classList.remove("clicked");
+    button_nine.classList.remove("clicked");
+    button_equal.classList.remove("clicked");
+    button_plus.classList.remove("clicked");
+    button_minus.classList.remove("clicked");
+    button_multiply.classList.remove("clicked");
+    button_divide.classList.remove("clicked");
+    button_all_clear.classList.remove("clicked");
+    button_clear.classList.remove("clicked");
+    button_dot.classList.remove("clicked");
+}
+
 // function for backspace removal of numbers
 function backspace() {
 
