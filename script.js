@@ -14,47 +14,72 @@ input_field.innerText = "0";
 
 // function to add two numbers
 function add(num_1, num_2) {
-    total = num_1 + num_2;
-    return total;
+
+    let value = num_1 + num_2;
+
+    if(isInt(value))
+        return value;
+    else
+        return value.toFixed(15);
+
 }
 
 // function to subtract two numbers
 function subtract(num_1, num_2) {
-    total = num_1 - num_2;
-    return total;
+
+    let value = num_1 - num_2;
+    
+    if(isInt(value))
+        return value;
+    else
+        return value.toFixed(15);
+
 }
 
 // function to multiply two numbers
 function multiply(num_1, num_2) {
-    total = num_1 * num_2;
-    return total;
+
+    let value = num_1 * num_2;
+    
+    if(isInt(value))
+        return value;
+    else
+        return value.toFixed(15);
+
 }
 
 // function to divide two numbers
 function divide(num_1, num_2) {
-    total = num_1 / num_2;
-    return total;
+
+    let value = num_1 / num_2;
+    
+    if(isInt(value)) {
+        return value;
+    }
+    else
+        return value.toFixed(15);
+
 }
 
 // function to take two numbers and an operator to call the basic math functions
 function operate(num_1, num_2, operator) {
     switch(operator) {
         case "+":
-            return add(num_1, num_2);
+            total = add(num_1, num_2);
             break;
         case "-":
-            return subtract(num_1, num_2);
+            total = subtract(num_1, num_2);
             break;
         case "*":
-            return multiply(num_1, num_2);
+            total = multiply(num_1, num_2);
             break;
         case "/":
-            return divide(num_1, num_2);
-            break;
-        default:
-            return "Error";
+            total = divide(num_1, num_2);
             break;
     }
+
+    return total;
+
 }
 
 // adds an event listener to every calculator button
@@ -209,5 +234,15 @@ function user_input_output() {
         input_field.innerText = second_number_string;
 
     }
+
+}
+
+// function to check if we have an int (or a float)
+function isInt(num) {
+
+    if(num % 1 === 0)
+        return true;
+    else
+        return false;
 
 }
