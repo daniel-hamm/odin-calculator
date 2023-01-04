@@ -158,8 +158,14 @@ function equal() {
     // call the operate function to calculate both numbers with the operator; convert the input strings to numbers
     operate(Number(first_number_string), Number(second_number_string), operator);
 
+    // round the total output of the calculation to 5 decimal places
+    total = Math.round(total * 100000) / 100000;
+
     // set the value of the input field to the calculation and limit to 15 characters
-    input_field.innerText = String(total).substring(0, 15);
+    if(total <= 999999999999999)    // is total inside the limit?
+        input_field.innerText = String(total).substring(0, 15);
+    else                            // if it's higher, we can't display it
+        input_field.innerText = "Limit reached!"
 
 }
 
