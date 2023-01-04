@@ -246,3 +246,39 @@ function isInt(num) {
         return false;
 
 }
+
+// function to detect if the user has pressed a key on the keyboard
+window.onkeydown = function(e) {
+    switch(e.keyCode) {
+        case 48:                // number 0
+            enterNumber("0");
+            break;
+        case 49:                // number 1
+            enterNumber("1");
+            break;
+        case 50:                // number 2
+            enterNumber("2");
+            break;
+        case 51:                // number 3
+            enterNumber("3");
+            break;
+        case 52:                // number 4
+            enterNumber("4");
+            break;
+        case 53:                // number 5
+            enterNumber("5");
+            break; 
+        case 54:                // number 6
+            enterNumber("6");
+            break;
+        case 55:                // number 7
+            enterNumber("7");
+            break;
+        case 56:                // number 8
+            enterNumber("8");
+            break;
+        case 57:                // number 9
+            enterNumber("9");
+            break;
+    }
+}
