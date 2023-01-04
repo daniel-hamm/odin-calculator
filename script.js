@@ -6,8 +6,11 @@ let operator = "+";                 // saves the current operator the user choos
 let total = 0;                      // the total of the calculation
 
 // add query selectors
-const input_field = document.querySelector('#number_input');
+const input_field = document.querySelector('#user-in-out-num');
 const calculator_buttons = document.querySelectorAll('.calculator-row button');
+
+// set the default value of the input field
+input_field.innerText = "0";
 
 // function to add two numbers
 function add(num_1, num_2) {
@@ -127,7 +130,7 @@ function equal() {
     operate(Number(first_number_string), Number(second_number_string), operator);
 
     // set the value of the input field to the calculation
-    input_field.setAttribute('value', total);
+    input_field.innerText = total;
 }
 
 // function to change the operator and continue the calculation
@@ -180,7 +183,7 @@ function clear() {
 
     }
 
-    input_field.setAttribute('value', '0');
+    input_field.innerText = "0";
 
 }
 
@@ -190,7 +193,7 @@ function clear_all() {
     first_number_string = "0";
     second_number_string = "0";
     first_or_second_num = 0;
-    input_field.setAttribute('value', '0');
+    input_field.innerText = "0";
 
 }
 
@@ -199,11 +202,11 @@ function user_input_output() {
 
     if(first_or_second_num === 0) {
 
-        input_field.setAttribute('value', first_number_string);
+        input_field.innerText = first_number_string;
 
     } else if(first_or_second_num === 1) {
 
-        input_field.setAttribute('value', second_number_string);
+        input_field.innerText = second_number_string;
 
     }
 
