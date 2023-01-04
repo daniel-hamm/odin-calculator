@@ -38,14 +38,13 @@ body {
     color: white;
 }
 
-#number_input {
+.user-input-output {
     flex: 1;
     border: 1px solid black;
     text-align: center;
     font-size: 20px;
     color: black;
-}
-
-#number_input::placeholder {
-    color: black;
+    display:flex;
+    justify-content: center;
+    align-items: center;
 }
